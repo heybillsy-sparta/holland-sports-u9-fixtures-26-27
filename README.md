@@ -44,6 +44,54 @@ Then add it as a subscription in your calendar app:
 3. Update `UID` to match the new date, e.g. `u9-fixture-20270501@hollandsports`.
 4. Commit and push the change.
 
+## Source of fixture data
+
+Fixture data (opponents, kick-off times, postponements) comes from the FA's
+Full-Time website. The team is **Holland Sports Youth U9 Harriers**.
+
+Fixtures URL:
+```
+https://fulltime.thefa.com/fixtures.html?selectedSeason=624665182&selectedFixtureGroupAgeGroup=0&selectedFixtureGroupKey=1_121288224&selectedDateCode=all&selectedClub=505587075&selectedTeam=389055971&selectedRelatedFixtureOption=3&previousSelectedFixtureGroupKey=1_121288224&previousSelectedClub=505587075
+```
+
+Relevant IDs embedded in that URL:
+- `selectedSeason=624665182`
+- `selectedFixtureGroupKey=1_121288224`
+- `selectedClub=505587075`
+- `selectedTeam=389055971`
+
+The fixtures table on that page is in a `<div class="fixtures-table table-scroll">`
+element (selector: `.fixtures-table`).
+
+### Fetching fixtures with the script
+
+`scripts/fetch-fixtures.ts` fetches the Full-Time page above and prints each
+row of the fixtures table, one per line, so it can be compared by eye against
+the `VEVENT` blocks in `U9_Fixtures.ics`.
+
+Requirements: Node.js 18+ (has global `fetch`).
+
+```
+npm install
+npm run fetch-fixtures
+```
+
+To point it at a different Full-Time URL:
+
+```
+npm run fetch-fixtures -- "https://fulltime.thefa.com/fixtures.html?..."
+```
+
+If it reports no fixtures table or no rows found, rerun with
+`FIXTURES_DEBUG=1` to dump the raw HTML to `fixtures_raw.html` for
+inspection — Full-Time may have changed its markup, or may render the table
+via JavaScript, in which case a plain HTTP fetch won't see it and the
+selectors in the script will need updating.
+
+Once you have the fixture rows, compare each date/opponent/kick-off time
+against the corresponding `VEVENT` in `U9_Fixtures.ics` and update `SUMMARY`
+as described above.
+
 ## Note on update timing
 
 Calendar apps that subscribe to this file (Google Calendar, Apple Calendar,
