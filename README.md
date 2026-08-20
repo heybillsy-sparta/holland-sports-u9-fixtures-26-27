@@ -44,6 +44,33 @@ Then add it as a subscription in your calendar app:
 3. Update `UID` to match the new date, e.g. `u9-fixture-20270501@hollandsports`.
 4. Commit and push the change.
 
+## Source of fixture data
+
+Fixture data (opponents, kick-off times, postponements) comes from the FA's
+Full-Time website. The team is **Holland Sports Youth U9 Harriers**.
+
+Fixtures URL:
+```
+https://fulltime.thefa.com/fixtures.html?selectedSeason=624665182&selectedFixtureGroupAgeGroup=0&selectedFixtureGroupKey=1_121288224&selectedDateCode=all&selectedClub=505587075&selectedTeam=389055971&selectedRelatedFixtureOption=3&previousSelectedFixtureGroupKey=1_121288224&previousSelectedClub=505587075
+```
+
+Relevant IDs embedded in that URL:
+- `selectedSeason=624665182`
+- `selectedFixtureGroupKey=1_121288224`
+- `selectedClub=505587075`
+- `selectedTeam=389055971`
+
+The fixtures table on that page is in a `<div class="fixtures-table table-scroll">`
+element (selector: `.fixtures-table`). When checking for updates, load that
+page, find the table matching Holland Sports Youth U9 Harriers, and compare
+each row's date/opponent/kick-off time against the corresponding `VEVENT` in
+`U9_Fixtures.ics`, updating `SUMMARY` as described above.
+
+Note: the Full-Time site may render its fixtures table via JavaScript, so a
+plain HTTP fetch of the page may not return the table contents — a browser
+render (or the site's underlying data endpoint, if one can be identified) may
+be required to read it reliably.
+
 ## Note on update timing
 
 Calendar apps that subscribe to this file (Google Calendar, Apple Calendar,
