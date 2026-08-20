@@ -4,15 +4,16 @@
  * U9_Fixtures.ics.
  *
  * Usage:
- *   npm run fetch-fixtures
- *   npm run fetch-fixtures -- "<some other fulltime.thefa.com fixtures URL>"
+ *   pnpm run fetch-fixtures
+ *   pnpm run fetch-fixtures -- "<some other fulltime.thefa.com fixtures URL>"
  *
- * Must be run somewhere with normal internet access to fulltime.thefa.com —
- * it has not been possible to test this against the live page from a
- * sandboxed environment where that domain is network-blocked, so the exact
- * table markup is unverified. If it prints no rows, inspect the raw HTML
- * (rerun with FIXTURES_DEBUG=1 to dump it to fixtures_raw.html) and adjust
- * the selectors below.
+ * Known limitation (verified August 2026): fulltime.thefa.com sits behind a
+ * Cloudflare bot challenge that answers plain HTTP requests with 403
+ * Forbidden whatever User-Agent is sent, so this script currently cannot
+ * reach the page. The `.fixtures-table` selector below has been checked
+ * against the live page in a real browser and is correct, so if the
+ * challenge is ever lifted the parsing should work as-is. In the meantime,
+ * open the URL in a browser and read the fixtures list there.
  */
 
 import { writeFileSync } from "node:fs";

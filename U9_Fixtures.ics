@@ -6,10 +6,14 @@ METHOD:PUBLISH
 X-WR-CALNAME:Holland Sports U9 Fixtures 2026-27
 BEGIN:VEVENT
 UID:u9-fixture-20260919@hollandsports
-DTSTAMP:20260802T105550Z
+DTSTAMP:20260820T000000Z
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260920
-SUMMARY:Holland Sports U9s (Fixture TBC)
+SUMMARY:Holland Sports U9s vs Tunbridge Wells Hurricanes & Spitfires
+LOCATION:Mill Lane Playing Fields (Hurst Green)
+DESCRIPTION:Two U9 league fixtures\, both at home: Holland Sports Youth U9 
+ Harriers vs Tunbridge Wells Youth U9 Hurricanes and vs Tunbridge Wells You
+ th U9 Spitfires. Kick-off times not yet published by the league.
 END:VEVENT
 BEGIN:VEVENT
 UID:u9-fixture-20261003@hollandsports
