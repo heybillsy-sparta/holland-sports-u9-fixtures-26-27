@@ -61,15 +61,36 @@ Relevant IDs embedded in that URL:
 - `selectedTeam=389055971`
 
 The fixtures table on that page is in a `<div class="fixtures-table table-scroll">`
-element (selector: `.fixtures-table`). When checking for updates, load that
-page, find the table matching Holland Sports Youth U9 Harriers, and compare
-each row's date/opponent/kick-off time against the corresponding `VEVENT` in
-`U9_Fixtures.ics`, updating `SUMMARY` as described above.
+element (selector: `.fixtures-table`).
 
-Note: the Full-Time site may render its fixtures table via JavaScript, so a
-plain HTTP fetch of the page may not return the table contents — a browser
-render (or the site's underlying data endpoint, if one can be identified) may
-be required to read it reliably.
+### Fetching fixtures with the script
+
+`scripts/fetch-fixtures.ts` fetches the Full-Time page above and prints each
+row of the fixtures table, one per line, so it can be compared by eye against
+the `VEVENT` blocks in `U9_Fixtures.ics`.
+
+Requirements: Node.js 18+ (has global `fetch`).
+
+```
+npm install
+npm run fetch-fixtures
+```
+
+To point it at a different Full-Time URL:
+
+```
+npm run fetch-fixtures -- "https://fulltime.thefa.com/fixtures.html?..."
+```
+
+If it reports no fixtures table or no rows found, rerun with
+`FIXTURES_DEBUG=1` to dump the raw HTML to `fixtures_raw.html` for
+inspection — Full-Time may have changed its markup, or may render the table
+via JavaScript, in which case a plain HTTP fetch won't see it and the
+selectors in the script will need updating.
+
+Once you have the fixture rows, compare each date/opponent/kick-off time
+against the corresponding `VEVENT` in `U9_Fixtures.ics` and update `SUMMARY`
+as described above.
 
 ## Note on update timing
 
