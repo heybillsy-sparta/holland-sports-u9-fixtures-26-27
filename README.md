@@ -99,6 +99,19 @@ Once you have the fixture rows, compare each date/opponent/kick-off time
 against the corresponding `VEVENT` in `U9_Fixtures.ics` and update `SUMMARY`
 as described above.
 
+### Updating the calendar with Claude Code
+
+This repo ships a skill that does the whole update end to end — fetch the
+fixtures (via a real browser, since the script is Cloudflare-blocked), diff
+them against `U9_Fixtures.ics`, and after you confirm, edit the ICS and push
+to `main`. Run it with:
+
+```
+/update-fixtures
+```
+
+It's defined in `.claude/skills/update-fixtures/SKILL.md`.
+
 ## Note on update timing
 
 Calendar apps that subscribe to this file (Google Calendar, Apple Calendar,
