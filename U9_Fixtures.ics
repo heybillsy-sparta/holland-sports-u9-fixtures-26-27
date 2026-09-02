@@ -17,17 +17,26 @@ DESCRIPTION:Two U9 league fixtures\, both at home: Holland Sports Youth U9
 END:VEVENT
 BEGIN:VEVENT
 UID:u9-fixture-20261003@hollandsports
-DTSTAMP:20260802T105550Z
+DTSTAMP:20260902T091613Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
-SUMMARY:Holland Sports U9s (Fixture TBC)
+SUMMARY:Holland Sports U9s vs Tonbridge Junior Olympians & Spartans
+LOCATION:Racecourse Sports Ground
+DESCRIPTION:Two U9 league fixtures\, both away: Tonbridge Junior U9 Olympia
+ ns vs Holland Sports Youth U9 Harriers and Tonbridge Junior U9 Spartans vs
+  Holland Sports Youth U9 Harriers. Kick-off times not yet published by the
+  league.
 END:VEVENT
 BEGIN:VEVENT
 UID:u9-fixture-20261017@hollandsports
-DTSTAMP:20260802T105550Z
+DTSTAMP:20260902T091613Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
-SUMMARY:Holland Sports U9s (Fixture TBC)
+SUMMARY:Holland Sports U9s vs Uckfield Grasshoppers Maverick & Raptors
+LOCATION:Mill Lane Playing Fields (Hurst Green)
+DESCRIPTION:Two U9 league fixtures\, both at home: Holland Sports Youth U9 
+ Harriers vs Uckfield Grasshoppers Junior U9 Maverick and vs Uckfield Grass
+ hoppers Junior U9 Raptors. Kick-off times not yet published by the league.
 END:VEVENT
 BEGIN:VEVENT
 UID:u9-fixture-20261031@hollandsports
