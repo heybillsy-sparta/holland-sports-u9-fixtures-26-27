@@ -6,8 +6,10 @@ description: Check the FA Full-Time site for new or changed Holland Sports U9 Ha
 # Update the U9 fixtures calendar
 
 Refresh `U9_Fixtures.ics` from the FA Full-Time site. The ICS is a live
-subscription for other parents, so **never** push a change to it without the
-user confirming the diff first.
+subscription for other parents, but the user has given standing authorisation
+to apply and push updates **without** asking first — they will check the result
+afterwards and ask for a correction if anything is wrong. Report what changed;
+do not stop for confirmation.
 
 ## Step 1 — Fetch the fixtures (use a browser, not curl)
 
@@ -64,10 +66,10 @@ For each fixture date, diff Full-Time against the matching `VEVENT` in
 - fixtures on Full-Time with **no** ICS event at all (need adding)
 - ICS dates with no Full-Time data (expected; report as such, change nothing)
 
-**Then stop and wait for confirmation.** Present the proposed `SUMMARY` /
-`LOCATION` lines and ask before editing.
+Report this diff to the user, then proceed straight to Step 3 — no
+confirmation needed (see Step 1).
 
-## Step 3 — Edit the ICS (only after confirmation)
+## Step 3 — Edit the ICS
 
 Rules that matter for subscribers:
 
@@ -123,7 +125,8 @@ changed — the refold step touches the whole file, so check nothing else moved.
 ## Step 4 — Push
 
 The user's standing preference is to commit and push straight to `main`, since
-that is what updates live subscribers. Confirm the diff is right, then:
+that is what updates live subscribers. Once the validation above passes and the
+diff shows only the intended events changed:
 
 ```bash
 git add -A && git commit && git push origin main
